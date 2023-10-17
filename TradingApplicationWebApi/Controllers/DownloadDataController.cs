@@ -9,7 +9,6 @@ namespace TradingApplicationWebApi.Controllers
         private readonly IConfiguration _configuration;
         public DownloadDataController( IConfiguration configuration)
         {
-            //_logger = logger;
             _configuration = configuration;
         }
 
@@ -35,6 +34,6 @@ namespace TradingApplicationWebApi.Controllers
             return ts.Result;
         }
 
-
+        //TODO metoda pro ulozeni do DB
     }
 }
