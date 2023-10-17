@@ -1,5 +1,38 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model List<FinancialProduct>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                Symbol
+            </th>
+            <th>
+                From
+            </th>
+            <th>
+                Open
+            </th>
+            <th>
+                High
+            </th>
+            <th>
+                Low
+            </th>
+            <th>
+                Close
+            </th>
+            <th>
+                Volume
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            
+        }
+    </tbody>
+</table>
