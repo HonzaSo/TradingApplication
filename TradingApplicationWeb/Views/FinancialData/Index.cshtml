@@ -3,36 +3,27 @@
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
-            <th>
-                Symbol
-            </th>
-            <th>
-                From
-            </th>
-            <th>
-                Open
-            </th>
-            <th>
-                High
-            </th>
-            <th>
-                Low
-            </th>
-            <th>
-                Close
-            </th>
-            <th>
-                Volume
-            </th>
-            <th>
-
-            </th>
+            <th>Symbol</th>
+            <th>From</th>
+            <th>Open</th>
+            <th>High</th>
+            <th>Low</th>
+            <th>Close</th>
+            <th>Volume</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var obj in Model)
         {
-            
+            <tr>
+                <td>@obj.Symbol</td>
+                <td>@obj.From</td>
+                <td>@obj.Open</td>
+                <td>@obj.High</td>
+                <td>@obj.Low</td>
+                <td>@obj.Close</td>
+                <td>@obj.Volume</td>
+            </tr>
         }
     </tbody>
 </table>
