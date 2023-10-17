@@ -1,29 +1,43 @@
 ﻿@model List<FinancialProduct>
 
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>Symbol</th>
-            <th>From</th>
-            <th>Open</th>
-            <th>High</th>
-            <th>Low</th>
-            <th>Close</th>
-            <th>Volume</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var obj in Model)
-        {
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">
+                Downloaded data from FinanceYahoo
+            </h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="FinancialData" asp-action="Download" class="btn btn-primary">
+                Download new product/day
+            </a>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
             <tr>
-                <td>@obj.Symbol</td>
-                <td>@obj.From</td>
-                <td>@obj.Open</td>
-                <td>@obj.High</td>
-                <td>@obj.Low</td>
-                <td>@obj.Close</td>
-                <td>@obj.Volume</td>
+                <th>Symbol</th>
+                <th>From</th>
+                <th>Open</th>
+                <th>High</th>
+                <th>Low</th>
+                <th>Close</th>
+                <th>Volume</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td>@obj.Symbol</td>
+                    <td>@obj.From</td>
+                    <td>@obj.Open</td>
+                    <td>@obj.High</td>
+                    <td>@obj.Low</td>
+                    <td>@obj.Close</td>
+                    <td>@obj.Volume</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

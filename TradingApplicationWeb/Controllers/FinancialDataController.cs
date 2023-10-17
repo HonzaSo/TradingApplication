@@ -16,5 +16,9 @@ namespace TradingApplicationWeb.Controllers
             List<FinancialProduct> objFinancialProductList = _db.FinancialProducts.ToList();
             return View(objFinancialProductList);
         }
+        public IActionResult Download()
+        {
+            return View();
+        }
     }
 }
