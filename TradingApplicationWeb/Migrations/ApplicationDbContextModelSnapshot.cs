@@ -49,8 +49,8 @@ namespace TradingApplicationWeb.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Volume")
-                        .HasColumnType("int");
+                    b.Property<long>("Volume")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -66,7 +66,7 @@ namespace TradingApplicationWeb.Migrations
                             Low = 150.41999999999999,
                             Open = 153.77500000000001,
                             Symbol = "T",
-                            Volume = 123456
+                            Volume = 123456L
                         },
                         new
                         {
@@ -77,7 +77,7 @@ namespace TradingApplicationWeb.Migrations
                             Low = 150.41999999999999,
                             Open = 153.77500000000001,
                             Symbol = "E",
-                            Volume = 123456
+                            Volume = 123456L
                         },
                         new
                         {
@@ -88,7 +88,7 @@ namespace TradingApplicationWeb.Migrations
                             Low = 150.41999999999999,
                             Open = 153.77500000000001,
                             Symbol = "S",
-                            Volume = 123456
+                            Volume = 123456L
                         });
                 });
 #pragma warning restore 612, 618

@@ -1,1 +1,13 @@
-﻿<h2>Download data</h2>
+﻿<h2>Stahni data</h2>
+
+<form>
+    <div class="mb-3">
+        <label for="symbol" class="form-label">Symbol</label>
+        <input type="text" class="form-control" id="symbol">
+    </div>
+    <div class="mb-3">
+        <label for="date" class="form-label">Datum všedního dne</label>
+        <input type="date" class="form-control" id="date">
+    </div>
+    <button type="button" asp-controller="FinancialData" asp-action="Index" class="btn btn-primary">Stáhnout</button>
+</form>

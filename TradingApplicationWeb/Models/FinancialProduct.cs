@@ -20,7 +20,7 @@ namespace TradingApplicationWeb.Models
         [Required]
         public double Close { get; set; }
         [Required]
-        public int Volume { get; set; }
+        public Int64 Volume { get; set; }
     
     }
 }

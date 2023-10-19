@@ -1,19 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.VisualBasic;
+using Newtonsoft.Json;
+using TradingApplicationWebApi;
 
 namespace TradingApplicationWebApi.Controllers
 {
     [ApiController]
     public class DownloadDataController : ControllerBase
     {
-        private readonly IConfiguration _configuration;
-        public DownloadDataController( IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
+        //private readonly IConfiguration _configuration;
+        //public DownloadDataController(IConfiguration configuration)
+        //{
+        //    _configuration = configuration;
+        //}
 
         [HttpGet]
-        [Route("API/DownloadData")]
+        [Route("API/DownloadDataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")]
         public string DownloadDataForSymbolByDate(string symbol, string date)
         {
             string finalyUrl = GetFinalyUrl(symbol, date);
@@ -22,9 +25,10 @@ namespace TradingApplicationWebApi.Controllers
 
         private string GetFinalyUrl(string symbol, string date)
         {
-            string url = $"{_configuration["BaseUrlFY"]}/";
-            return $"{_configuration["BaseUrlFY"]}/" +
-                $"{symbol}/{date}?adjusted=true&apiKey={_configuration["ApiKeyFY"]}";
+            //string url = $"{_configuration["BaseUrlFY"]}/";
+            //return $"{_configuration["BaseUrlFY"]}/" +
+            //    $"{symbol}/{date}?adjusted=true&apiKey={_configuration["ApiKeyFY"]}";
+            return "https://api.polygon.io/v1/open-close" + symbol + "/" + date + "?adjusted=true&apiKey=UckwefeCsrNmdeIkoB7eQHLOSYc3E9kp";
         }
 
         private string DownloadData(string url)
@@ -34,6 +38,16 @@ namespace TradingApplicationWebApi.Controllers
             return ts.Result;
         }
 
-        //TODO metoda pro ulozeni do DB
+        //private  FinancialProduct MapToFinancialProductModel(string response)
+        //{
+        //    DownloadDataController ddc = new DownloadDataController();
+        //    FinancialProduct fp = JsonConvert.DeserializeObject<FinancialProduct>(response));
+        //    return fp;
+        //    //string downloadedData = DownloadDataForSymbolByDate();
+        //}
+        private void SafeDataToDb()
+        {
+
+        }
     }
 }

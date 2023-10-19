@@ -79,3 +79,4 @@ D:\ProjektyVK\TradingApplication\TradingApplicationWeb\bin\Debug\net7.0\TradingA
 D:\ProjektyVK\TradingApplication\TradingApplicationWeb\bin\Debug\net7.0\TradingApplicationWebApi.dll
 D:\ProjektyVK\TradingApplication\TradingApplicationWeb\bin\Debug\net7.0\TradingApplicationWebApi.pdb
 D:\ProjektyVK\TradingApplication\TradingApplicationWeb\obj\Debug\net7.0\TradingApplicationWeb.MvcApplicationPartsAssemblyInfo.cs
+D:\ProjektyVK\TradingApplication\TradingApplicationWeb\bin\Debug\net7.0\Newtonsoft.Json.dll

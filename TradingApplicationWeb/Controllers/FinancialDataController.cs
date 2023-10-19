@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualBasic;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using TradingApplicationWeb.Data;
 using TradingApplicationWeb.Interfaces;
 using TradingApplicationWeb.Models;
+using TradingApplicationWebApi.Controllers;
 
 namespace TradingApplicationWeb.Controllers
 {
@@ -18,14 +21,25 @@ namespace TradingApplicationWeb.Controllers
             AccessDataOperation ado = new AccessDataOperation(_db);
             List<FinancialProduct> lfp = ado.GetAllFinancialProducts();
 
-
-            //List<FinancialProduct> objFinancialProductList = _db.FinancialProducts.ToList();
             return View(lfp);
-            //return View(objFinancialProductList);
         }
         public IActionResult Download()
         {
             return View();
         }
+
+        //private FinancialProduct MapToFinancialProductModel(string response)
+        //{
+        //    DownloadDataController ddc = new DownloadDataController();
+        //    FinancialProduct fp = JsonConvert.DeserializeObject<FinancialProduct>(response));
+        //    return fp;
+        //    //string downloadedData = DownloadDataForSymbolByDate();
+        //}
+        //private void SafeDataToDb()
+        //{
+            
+        //}
+
+
     }
 }

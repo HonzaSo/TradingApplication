@@ -13,7 +13,8 @@ namespace TradingApplicationWeb.Data
 
         public void Delete(FinancialProduct product)
         {
-            throw new NotImplementedException();
+            _db.Remove(product);
+            _db.SaveChanges();
         }
 
         public List<FinancialProduct> GetAllFinancialProducts()
@@ -23,12 +24,20 @@ namespace TradingApplicationWeb.Data
 
         public FinancialProduct GetFinancialProductById(int id)
         {
-            throw new NotImplementedException();
+            return _db.FinancialProducts.FirstOrDefault(x => x.Id == id);
         }
 
-        public object SafeProduct(FinancialProduct product)
+        public object CreateProduct(FinancialProduct product)
         {
-            throw new NotImplementedException();
+            object obj = null;
+            FinancialProduct fp = _db.FinancialProducts.FirstOrDefault(x => x.Symbol == product.Symbol && x.From == product.From);
+            if (fp == null)
+            {
+                obj = _db.Add(product);
+                _db.SaveChanges();
+            }
+
+            return obj;
         }
     }
 }
