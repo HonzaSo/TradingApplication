@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using TradingApplicationWeb.Interfaces;
 
 namespace TradingApplicationWeb.Models
 {
@@ -20,5 +21,6 @@ namespace TradingApplicationWeb.Models
         public double Close { get; set; }
         [Required]
         public int Volume { get; set; }
+    
     }
 }
