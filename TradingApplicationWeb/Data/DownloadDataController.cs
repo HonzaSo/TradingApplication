@@ -24,7 +24,7 @@ namespace TradingApplicationWebApi.Controllers
             string finalyUrl = GetFinalyUrl(symbol, date);
             string response = DownloadData(finalyUrl);
 
-            return SafeDataToDb(MapToFinancialProductModel(response));
+            return SaveDataToDb(MapToFinancialProductModel(response));
         }
 
         private string GetFinalyUrl(string symbol, string date)
@@ -47,7 +47,7 @@ namespace TradingApplicationWebApi.Controllers
             FinancialProduct fp = JsonConvert.DeserializeObject<FinancialProduct>(response);
             return fp;
         }
-        private FinancialProduct SafeDataToDb(FinancialProduct fp)
+        private FinancialProduct SaveDataToDb(FinancialProduct fp)
         {
             AccessDataOperation ado = new AccessDataOperation(_db);
             ado.CreateProduct(fp);
