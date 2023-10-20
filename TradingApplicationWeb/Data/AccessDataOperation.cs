@@ -11,7 +11,7 @@ namespace TradingApplicationWeb.Data
             _db = db;
         }
 
-        public void Delete(FinancialProduct product)
+        public void DeleteProduct(FinancialProduct product)
         {
             _db.Remove(product);
             _db.SaveChanges();

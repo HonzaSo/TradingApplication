@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualBasic;
 using Newtonsoft.Json;
+using System.Collections;
 using System.Collections.Generic;
 using TradingApplicationWeb.Data;
 using TradingApplicationWeb.Interfaces;
@@ -28,18 +29,15 @@ namespace TradingApplicationWeb.Controllers
             return View();
         }
 
-        //private FinancialProduct MapToFinancialProductModel(string response)
-        //{
-        //    DownloadDataController ddc = new DownloadDataController();
-        //    FinancialProduct fp = JsonConvert.DeserializeObject<FinancialProduct>(response));
-        //    return fp;
-        //    //string downloadedData = DownloadDataForSymbolByDate();
-        //}
-        //private void SafeDataToDb()
-        //{
-            
-        //}
+        [HttpPost]
+        //public IActionResult Add(FormCollection collection)
+        public IActionResult Add(string symbol, string date)
+        {
+            DownloadDataController ddc = new DownloadDataController(_db);
+            //FinancialProduct product =
+            ddc.DownloadDataForSymbolByDate(symbol, date);
 
-
+            return RedirectToAction("Index", "FinancialData");
+        }
     }
 }

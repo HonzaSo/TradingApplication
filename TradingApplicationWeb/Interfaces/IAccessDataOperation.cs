@@ -7,7 +7,7 @@ namespace TradingApplicationWeb.Interfaces
         List<FinancialProduct> GetAllFinancialProducts();
 
         object CreateProduct(FinancialProduct product);
-        void Delete(FinancialProduct product);
+        void DeleteProduct(FinancialProduct product);
         FinancialProduct GetFinancialProductById(int id);
     }
 }
