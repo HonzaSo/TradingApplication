@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\ProjektyVK\TradingApplication\TradingApplicationWeb
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/ProjektyVK/TradingApplication/TradingApplicationWeb/Views/FinancialData/Buy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmluYW5jaWFsRGF0YVxCdXkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/ProjektyVK/TradingApplication/TradingApplicationWeb/Views/FinancialData/Download.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmluYW5jaWFsRGF0YVxEb3dubG9hZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

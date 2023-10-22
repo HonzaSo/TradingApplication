@@ -6,21 +6,23 @@ using System.Collections.Generic;
 using TradingApplicationWeb.Data;
 using TradingApplicationWeb.Interfaces;
 using TradingApplicationWeb.Models;
-using TradingApplicationWebApi.Controllers;
 
 namespace TradingApplicationWeb.Controllers
 {
     public class FinancialDataController : Controller
     {
         private readonly ApplicationDbContext _db;
-        public FinancialDataController(ApplicationDbContext db)
+        private readonly IAccessDataOperation _ado;
+        private readonly IDownloadDataController _ddc;
+        public FinancialDataController(ApplicationDbContext db, IAccessDataOperation ado, IDownloadDataController ddc)
         {
             _db = db;
+            _ado = ado;
+            _ddc = ddc;
         }
         public IActionResult Index()
         {
-            AccessDataOperation ado = new AccessDataOperation(_db);
-            List<FinancialProduct> lfp = ado.GetAllFinancialProducts();
+            List<FinancialProduct> lfp = _ado.GetAllFinancialProducts();
 
             return View(lfp);
         }
@@ -30,14 +32,17 @@ namespace TradingApplicationWeb.Controllers
         }
 
         [HttpPost]
-        //public IActionResult Add(FormCollection collection)
         public IActionResult Add(string symbol, string date)
         {
-            DownloadDataController ddc = new DownloadDataController(_db);
-            //FinancialProduct product =
-            ddc.DownloadDataForSymbolByDate(symbol, date);
+            //DownloadDataController ddc = new DownloadDataController(_db);
+            _ddc.DownloadDataForSymbolByDate(symbol.ToUpper(), date);
 
             return RedirectToAction("Index", "FinancialData");
+        }
+
+        public IActionResult Buy()
+        {
+            return View();
         }
     }
 }

@@ -7,7 +7,7 @@ using TradingApplicationWebApi;
 namespace TradingApplicationWebApi.Controllers
 {
     [ApiController]
-    public class DownloadDataController : ControllerBase
+    public class DownloadDataController2 : ControllerBase
     {
         //private readonly IConfiguration _configuration;
         //public DownloadDataController(IConfiguration configuration)
@@ -16,7 +16,7 @@ namespace TradingApplicationWebApi.Controllers
         //}
 
         [HttpGet]
-        [Route("API/DownloadDataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")]
+        [Route("API/DownloadData")]
         public string DownloadDataForSymbolByDate(string symbol, string date)
         {
             string finalyUrl = GetFinalyUrl(symbol, date);
