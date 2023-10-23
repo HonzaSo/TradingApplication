@@ -1,15 +1,20 @@
-﻿<h2>Stahni data</h2>
+﻿@model FinancialProduct
+<h2>Stahni data</h2>
 
-
-@using(Html.BeginForm("Add", "FinancialData", FormMethod.Post, new {@class= "form-horizontal" }))
+@Html.ValidationSummary()
+@using (Html.BeginForm("Add", "FinancialData", FormMethod.Post, new { @class = "form-horizontal" }))
 {
     <div class="mb-3">
         <label for="symbol" class="form-label">Symbol</label>
-        <input type="text" class="form-control" id="symbol" name="symbol">
+        @* <input type="text" class="form-control" id="symbol" name="symbol"> *@
+        @Html.TextBoxFor(x => x.Symbol, new {@class="form-control"})
+        @Html.ValidationMessageFor(x => x.Symbol)
     </div>
     <div class="mb-3">
         <label for="date" class="form-label">Datum všedního dne</label>
-        <input type="date" class="form-control" id="date" name="date">
+        @* <input type="date" class="form-control" id="date" name="date"> *@
+        @Html.TextBoxFor(x => x.From, new {@class="form-control", @type="date"})
+        @* @Html.ValidationMessageFor(x => x.From) *@
     </div>
     <button type="submit"  class="btn btn-primary">Stáhnout</button>
 }

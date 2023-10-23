@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.VisualBasic;
 using Newtonsoft.Json;
 using System.Collections;
@@ -32,10 +33,17 @@ namespace TradingApplicationWeb.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(string symbol, string date)
+        public IActionResult Add(string symbol, string from)
         {
-            //DownloadDataController ddc = new DownloadDataController(_db);
-            _ddc.DownloadDataForSymbolByDate(symbol.ToUpper(), date);
+            if (ModelState.IsValid)
+            {
+                _ddc.DownloadDataForSymbolByDate(symbol.ToUpper(), from);
+            }
+            else
+            {
+                return View("Download", new FinancialProduct() { Symbol=symbol, From=from});
+            }
+
 
             return RedirectToAction("Index", "FinancialData");
         }

@@ -7,19 +7,20 @@ namespace TradingApplicationWeb.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Symbol produktu je vyzadovan.")]
         public string Symbol { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Datum je povinny.")]
+        //[RegularExpression("((?:19|20)\\d\\d)-(0?[1-9]|1[012])-([12][0-9]|3[01]|0?[1-9])")]
         public string From { get; set; }
-        [Required]
+
         public double Open { get; set; }
-        [Required]
+
         public double High { get; set; }
-        [Required]
+
         public double Low { get; set; }
-        [Required]
+
         public double Close { get; set; }
-        [Required]
+
         public Int64 Volume { get; set; }
     
     }
