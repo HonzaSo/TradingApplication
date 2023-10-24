@@ -37,7 +37,14 @@ namespace TradingApplicationWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                _ddc.DownloadDataForSymbolByDate(symbol.ToUpper(), from);
+                var SaFeFp = _ddc.DownloadDataForSymbolByDate(symbol.ToUpper(), from);
+                if (SaFeFp == null) {
+                    TempData["empty"] = "Stazeni neprobehlo, zadal jsi spravne data?";
+
+                } else
+                {
+                    TempData["success"] = "Stazeni bylo uspesne.";
+                }
             }
             else
             {
@@ -49,6 +56,11 @@ namespace TradingApplicationWeb.Controllers
         }
 
         public IActionResult Buy()
+        {
+            return View();
+        }
+
+        public IActionResult Delete()
         {
             return View();
         }
