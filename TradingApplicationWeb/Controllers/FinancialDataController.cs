@@ -60,9 +60,10 @@ namespace TradingApplicationWeb.Controllers
             return View();
         }
 
-        public IActionResult Delete()
+        public IActionResult Delete(FinancialProduct fp)
         {
-            return View();
+            _ado.DeleteProduct(fp);
+            return RedirectToAction("Index", "FinancialData");
         }
     }
 }

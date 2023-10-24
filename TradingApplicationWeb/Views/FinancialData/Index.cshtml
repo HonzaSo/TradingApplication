@@ -39,8 +39,8 @@
                     <td>@obj.Close</td>
                     <td>@obj.Volume</td>
                     <td>
-                        <a asp-controller="FinancialData" asp-action="Buy">Nakoupit</a> / 
-                        <a asp-controller="FinancialData" asp-action="Delete">Smazat</a>
+                        <a asp-controller="FinancialData" asp-action="Buy">Nakoupit</a> /
+                        <a href="@Url.Action("Delete", "FinancialData", new {id = obj.Id})">Smazat</a>
                     </td>
                 </tr>
             }
