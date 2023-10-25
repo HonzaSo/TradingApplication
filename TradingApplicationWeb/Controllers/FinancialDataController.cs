@@ -1,9 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
-using Microsoft.VisualBasic;
-using Newtonsoft.Json;
-using System.Collections;
-using System.Collections.Generic;
 using TradingApplicationWeb.Data;
 using TradingApplicationWeb.Interfaces;
 using TradingApplicationWeb.Models;
@@ -12,20 +7,20 @@ namespace TradingApplicationWeb.Controllers
 {
     public class FinancialDataController : Controller
     {
-        private readonly ApplicationDbContext _db;
-        private readonly IAccessDataOperation _ado;
-        private readonly IDownloadDataController _ddc;
-        public FinancialDataController(ApplicationDbContext db, IAccessDataOperation ado, IDownloadDataController ddc)
+        private readonly ApplicationDbContext dbContext;
+        private readonly IAccessDataOperation accessDataOperation;
+        private readonly IDownloadDataController downloadDataController;
+        public FinancialDataController(ApplicationDbContext dbContext, IAccessDataOperation accessDataOperation, IDownloadDataController downloadDataController)
         {
-            _db = db;
-            _ado = ado;
-            _ddc = ddc;
+            this.dbContext = dbContext;
+            this.accessDataOperation = accessDataOperation;
+            this.downloadDataController = downloadDataController;
         }
         public IActionResult Index()
         {
-            List<FinancialProduct> lfp = _ado.GetAllFinancialProducts();
+            var financialProducts = accessDataOperation.GetAllFinancialProducts();
 
-            return View(lfp);
+            return View(financialProducts);
         }
         public IActionResult Download()
         {
@@ -37,8 +32,8 @@ namespace TradingApplicationWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                var SaFeFp = _ddc.DownloadDataForSymbolByDate(symbol.ToUpper(), from);
-                if (SaFeFp == null) {
+                var downloadedFinancialProduct = downloadDataController.DownloadDataForSymbolByDate(symbol.ToUpper(), from);
+                if (downloadedFinancialProduct == null) {
                     TempData["empty"] = "Stazeni neprobehlo, zadal jsi spravne data?";
 
                 } else
@@ -60,9 +55,10 @@ namespace TradingApplicationWeb.Controllers
             return View();
         }
 
-        public IActionResult Delete(FinancialProduct fp)
+        public IActionResult Delete(FinancialProduct financialProduct)
         {
-            _ado.DeleteProduct(fp);
+            accessDataOperation.DeleteProduct(financialProduct);
+            TempData["success"] = "Smazani bylo uspesne.";
             return RedirectToAction("Index", "FinancialData");
         }
     }

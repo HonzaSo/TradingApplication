@@ -5,39 +5,40 @@ namespace TradingApplicationWeb.Data
 {
     public class AccessDataOperation : IAccessDataOperation
     {
-        private ApplicationDbContext _db { get; set; }
-        public AccessDataOperation(ApplicationDbContext db)
+        private ApplicationDbContext dbContext { get; set; }
+        public AccessDataOperation(ApplicationDbContext dbContext)
         {
-            _db = db;
+            this.dbContext = dbContext;
         }
 
         public void DeleteProduct(FinancialProduct product)
         {
-            _db.Remove(product);
-            _db.SaveChanges();
+            dbContext.Remove(product);
+            dbContext.SaveChanges();
         }
 
         public List<FinancialProduct> GetAllFinancialProducts()
         {
-            return _db.FinancialProducts.ToList();
+            return dbContext.FinancialProducts.ToList();
         }
 
-        public FinancialProduct GetFinancialProductById(int id)
+        public FinancialProduct? GetFinancialProductById(int id)
         {
-            return _db.FinancialProducts.FirstOrDefault(x => x.Id == id);
+            return dbContext.FinancialProducts.FirstOrDefault(x => x.Id == id);
         }
 
-        public object CreateProduct(FinancialProduct product)
+        //TODO - vrace namapovaný nedatabazový objekt - souvisí s Modelem, který nebude navázaný na DB
+        public FinancialProduct? CreateProduct(FinancialProduct product)
         {
-            object obj = null;
-            FinancialProduct fp = _db.FinancialProducts.FirstOrDefault(x => x.Symbol == product.Symbol && x.From == product.From);
-            if (fp == null)
+            FinancialProduct? result = null;
+            var financialProduct = dbContext.FinancialProducts.FirstOrDefault(x => x.Symbol == product.Symbol && x.From == product.From);
+            if (financialProduct == null)
             {
-                obj = _db.Add(product);
-                _db.SaveChanges();
+                result = dbContext.Add(product).Entity;
+                dbContext.SaveChanges();
             }
 
-            return obj;
+            return result;
         }
     }
 }
