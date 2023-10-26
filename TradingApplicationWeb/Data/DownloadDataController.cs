@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.VisualBasic;
 using Newtonsoft.Json;
 using TradingApplicationWeb.Models;
 using TradingApplicationWeb.Data;
-using Azure;
 using TradingApplicationWeb.Interfaces;
 
 namespace TradingApplicationWebApi.Controllers
@@ -12,10 +9,10 @@ namespace TradingApplicationWebApi.Controllers
     [ApiController]
     public class DownloadDataController : ControllerBase, IDownloadDataController
     {
-        private ApplicationDbContext _db { get; set; }
-        public DownloadDataController(ApplicationDbContext db)
+        private ApplicationDbContext dbContext { get; set; }
+        public DownloadDataController(ApplicationDbContext dbContext)
         {
-            _db = db;
+            this.dbContext = dbContext;
         }
 
 
@@ -34,9 +31,6 @@ namespace TradingApplicationWebApi.Controllers
 
         private string GetFinalyUrl(string symbol, string date)
         {
-            //string url = $"{_configuration["BaseUrlFY"]}/";
-            //return $"{_configuration["BaseUrlFY"]}/" +
-            //    $"{symbol}/{date}?adjusted=true&apiKey={_configuration["ApiKeyFY"]}";
             return "https://api.polygon.io/v1/open-close/" + symbol + "/" + date + "?adjusted=true&apiKey=UckwefeCsrNmdeIkoB7eQHLOSYc3E9kp";
         }
 
@@ -48,9 +42,8 @@ namespace TradingApplicationWebApi.Controllers
                 Task<string> ts = httpClient.GetStringAsync(url);
                 return ts.Result;
             }
-            catch (Exception e)
+            catch
             {
-                throw new NotImplementedException(e);
                 return null;
             }
         }
@@ -62,7 +55,7 @@ namespace TradingApplicationWebApi.Controllers
         }
         private FinancialProduct SaveDataToDb(FinancialProduct fp)
         {
-            AccessDataOperation ado = new AccessDataOperation(_db);
+            AccessDataOperation ado = new AccessDataOperation(dbContext);
             ado.CreateProduct(fp);
             return fp;
         }
