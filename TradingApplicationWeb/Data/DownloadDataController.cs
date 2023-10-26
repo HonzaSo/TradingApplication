@@ -50,7 +50,7 @@ namespace TradingApplicationWebApi.Controllers
             }
             catch (Exception e)
             {
-                // logging e
+                throw new NotImplementedException(e);
                 return null;
             }
         }

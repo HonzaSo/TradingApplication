@@ -1,15 +1,14 @@
 using Microsoft.EntityFrameworkCore;
+using TradingApplicationWeb;
 using TradingApplicationWeb.Data;
-using TradingApplicationWeb.Interfaces;
-using TradingApplicationWebApi.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddScoped<IAccessDataOperation, AccessDataOperation>();
-builder.Services.AddScoped<IDownloadDataController, DownloadDataController>();
+
+var startup = new Startup(builder.Configuration);
+startup.ConfigureServices(builder.Services);
 
 var app = builder.Build();
 
