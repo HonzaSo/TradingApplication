@@ -5,7 +5,9 @@ VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradingApplicationWeb", "TradingApplicationWeb\TradingApplicationWeb.csproj", "{C3ABA6D7-6F11-4B32-A373-3FC517C60915}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradingApplicationWebApi", "TradingApplicationWebApi\TradingApplicationWebApi.csproj", "{5D790C21-5848-4124-9279-3A7A4714D76F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradingApplicationWebApi", "TradingApplicationWebApi\TradingApplicationWebApi.csproj", "{5D790C21-5848-4124-9279-3A7A4714D76F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradingApplicationWeb.Tests", "TradingApplicationWeb.Tests\TradingApplicationWeb.Tests.csproj", "{456B1927-2F1E-4688-951D-F23872211317}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{5D790C21-5848-4124-9279-3A7A4714D76F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D790C21-5848-4124-9279-3A7A4714D76F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D790C21-5848-4124-9279-3A7A4714D76F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{456B1927-2F1E-4688-951D-F23872211317}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{456B1927-2F1E-4688-951D-F23872211317}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{456B1927-2F1E-4688-951D-F23872211317}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{456B1927-2F1E-4688-951D-F23872211317}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
